@@ -77,7 +77,7 @@ labels = np.array(labels)
 
 # train and evaluate a k-NN classifer on the raw pixel intensities
 print("[INFO] evaluating raw pixel accuracy...")
-k = 20
+k = 20 #to choose the number of neighbours
 model = KNeighborsClassifier(n_neighbors=k,
 	n_jobs=5)
 model.fit(trainRI, trainRL)
