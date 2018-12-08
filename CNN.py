@@ -30,22 +30,22 @@ class_mode = 'binary')
 
 classifier.fit_generator(training_set,
 steps_per_epoch = 10,
-epochs = 25,
+epochs = 10,
 validation_data = test_set,
 validation_steps = 10)
 
 
 import numpy as np
 from keras.preprocessing import image
-test_image = image.load_img('testimage.jpg', target_size = (64, 64))
+test_image = image.load_img('testimage11.jpg', target_size = (64, 64))
 test_image = image.img_to_array(test_image)
 test_image = np.expand_dims(test_image, axis = 0)
 result = classifier.predict(test_image)
 training_set.class_indices
 if result[0][0] == 1:
-	prediction = 'Amelanotic Melanoma'
-else:
 	prediction = 'Alopecia areata'
+else:
+	prediction = 'Amelanotic Melanoma'
 	
 print("test image :")
 print(prediction)
