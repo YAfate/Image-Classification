@@ -25,7 +25,7 @@ class_mode = 'binary')
 test_set = test_datagen.flow_from_directory('cnntest',
 target_size = (64, 64),
 batch_size = 32,
-class_mode = 'binary')
+class_mode = 'binary') # 'cnndata' : the folder that contains training data, each class in different folder
 
 
 classifier.fit_generator(training_set,
@@ -37,15 +37,15 @@ validation_steps = 10)
 
 import numpy as np
 from keras.preprocessing import image
-test_image = image.load_img('testimage11.jpg', target_size = (64, 64))
+test_image = image.load_img('testimage16.jpg', target_size = (64, 64)) # name of the image to test. (in the same folder)
 test_image = image.img_to_array(test_image)
 test_image = np.expand_dims(test_image, axis = 0)
 result = classifier.predict(test_image)
 training_set.class_indices
 if result[0][0] == 1:
-	prediction = 'Alopecia areata'
+	prediction = 'Alopecia areata' # class 1 
 else:
-	prediction = 'Amelanotic Melanoma'
+	prediction = 'Amelanotic Melanoma' #class 2
 	
 print("test image :")
 print(prediction)
